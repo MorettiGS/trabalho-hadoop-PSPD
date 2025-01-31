@@ -3,17 +3,13 @@ import java.util.*;
 import java.util.regex.*;
 
 public class ContadorDePalavras {
-
-    // Atualizando a expressão regular para capturar letras acentuadas e caracteres especiais da língua portuguesa
     public static Map<String, Integer> contarOcorrencias(String nomeArquivo) {
         Map<String, Integer> contador = new HashMap<>();
-        // Expressão regular para capturar letras acentuadas e caracteres especiais
         Pattern pattern = Pattern.compile("[a-zA-Záàãâäéèêëíìîïóòõôöúùûüç]+");
 
         try (BufferedReader br = new BufferedReader(new FileReader(nomeArquivo, java.nio.charset.StandardCharsets.UTF_8))) {
             String linha;
             while ((linha = br.readLine()) != null) {
-                // Transforma todas as palavras em minúsculas e encontra as palavras na linha
                 Matcher matcher = pattern.matcher(linha.toLowerCase());
                 while (matcher.find()) {
                     String palavra = matcher.group();
