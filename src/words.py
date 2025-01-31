@@ -11,7 +11,7 @@ palavras_base = [
     "economia", "política", "direito", "medicina", "engenharia", "arquitetura", "agricultura", "ciência", "tecnologia"
 ]
 
-palavras = random.choices(palavras_base, k=250000000)
+palavras = random.choices(palavras_base, k=25000000)
 
 def criar_arquivo(nome_arquivo, palavras):
     with open(nome_arquivo, "w", encoding="utf-8") as f:
