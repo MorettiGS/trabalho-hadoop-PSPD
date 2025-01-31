@@ -1,16 +1,22 @@
 import random
-import nltk
-from nltk.corpus import floresta
 
-nltk.download("floresta")
+palavras_base = [
+    "amor", "feliz", "triste", "sol", "lua", "estrela", "mar", "vento", "chuva", "neve", "fogo", "terra", "ar",
+    "montanha", "vale", "rio", "lago", "oceano", "floresta", "deserto", "cidade", "vila", "praia", "ilha", "campo",
+    "estrada", "ponte", "túnel", "carro", "ônibus", "bicicleta", "moto", "avião", "barco", "navio", "trem", "metrô",
+    "futebol", "basquete", "voleibol", "xadrez", "corrida", "natação", "ginástica", "ciclismo", "boxe", "judô",
+    "computador", "internet", "teclado", "mouse", "tela", "impressora", "telefone", "celular", "câmera", "vídeo",
+    "música", "dança", "teatro", "cinema", "livro", "poesia", "pintura", "escultura", "fotografia", "arte",
+    "matemática", "física", "química", "biologia", "geografia", "história", "filosofia", "sociologia", "psicologia",
+    "economia", "política", "direito", "medicina", "engenharia", "arquitetura", "agricultura", "ciência", "tecnologia"
+]
 
-palavras_portugues = list(set(word.lower() for word in floresta.words() if word.isalpha()))
+palavras = random.choices(palavras_base, k=250000000)
 
-def gerar_arquivo(quantidade=250000000):
-    with open("words.txt", 'w', encoding='utf-8') as f:
-        palavras_aleatorias = ' '.join(random.choices(palavras_portugues, k=quantidade))
-        f.write(palavras_aleatorias)
+def criar_arquivo(nome_arquivo, palavras):
+    with open(nome_arquivo, "w", encoding="utf-8") as f:
+        f.write("\n".join(palavras))
 
 if __name__ == "__main__":
-    gerar_arquivo()
-    print("Arquivo 'words.txt' gerado com sucesso!")
+    criar_arquivo("words.txt", palavras)
+    print("Arquivo 'words.txt' criado com sucesso!")
